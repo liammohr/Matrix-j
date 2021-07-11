@@ -14,7 +14,7 @@ public class Fraction {
         this.nominator = nominator;
         this.denominator = denominator;
 
-        if (this.nominator == 0) {   // there is only one representation for 0
+        if (this.nominator == 0) { // there is only one representation for 0
             this.denominator = 1;
         }
 
@@ -22,10 +22,18 @@ public class Fraction {
         this.nominator /= myGcd;
         this.denominator /= myGcd;
 
-        if (this.denominator < 0) {  // denominator is always positive
+        if (this.denominator < 0) { // denominator is always positive
             this.nominator *= -1;
             this.denominator *= -1;
         }
+    }
+
+    public Fraction(double x, double y) {
+        this((int) (x * Math.pow(10, 20)), (int) (y * Math.pow(10, 20)));
+    }
+
+    public Fraction(Fraction a, Fraction b) {
+        this(a.nominator * b.denominator, a.denominator * b.nominator);
     }
 
     public static Fraction zero() {
@@ -49,11 +57,13 @@ public class Fraction {
     }
 
     public Fraction add(Fraction b) {
-        return new Fraction(this.nominator * b.denominator + this.denominator * b.nominator, this.denominator * b.denominator);
+        return new Fraction(this.nominator * b.denominator + this.denominator * b.nominator,
+                this.denominator * b.denominator);
     }
 
     public Fraction subtract(Fraction b) {
-        return new Fraction(this.nominator * b.denominator - this.denominator * b.nominator, this.denominator * b.denominator);
+        return new Fraction(this.nominator * b.denominator - this.denominator * b.nominator,
+                this.denominator * b.denominator);
     }
 
     public Fraction multiply(Fraction b) {
@@ -78,5 +88,9 @@ public class Fraction {
 
     public String toString() {
         return this.nominator + (this.denominator == 1 ? "" : "/" + this.denominator);
+    }
+
+    public Fraction sqrt() {
+        return new Fraction(Math.sqrt(this.nominator), Math.sqrt(this.denominator));
     }
 }
