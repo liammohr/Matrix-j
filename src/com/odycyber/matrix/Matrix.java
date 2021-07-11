@@ -1,8 +1,6 @@
 package com.odycyber.matrix;
 import java.util.List;
 
-import com.odycyber.matrix.Matrix.PeulatDerugScalar;
-
 import java.util.ArrayList;
 
 public class Matrix {

@@ -105,11 +105,14 @@ public class Polynomial {
         return a.multiply(b);
     }
 
+    /*
+     * @pre this.getDegree() == 0 && b.getDegree() == 0
+     */
     public Polynomial divide(Polynomial b) {
         if (this.getDegree() == 0 && b.getDegree() == 0) {
             return new Polynomial(this.getCoefficient(0).divide(b.getCoefficient(0)));
         } else {
-            throw new Error("AAAAA");
+            throw new Error("No Implementation.");
         }
     }
 
@@ -138,5 +141,20 @@ public class Polynomial {
             }
         }
         return res;
+    }
+
+    /*
+     * @pre this.getDegree() == 0
+     */
+    public Polynomial sqrt() {
+        if (this.getDegree() == 0) {
+            return new Polynomial(this.getCoefficient(0).sqrt());
+        } else {
+            throw new Error("No Implementation.");
+        }
+    }
+
+    public static Polynomial sqrt(Polynomial a) {
+        return a.sqrt();
     }
 }
